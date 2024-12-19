@@ -99,14 +99,24 @@ h2 {
   color: #fff;
 }
 
-#result {
+/* 統一した背景色 */
+#result, #edpi-result {
   margin-top: 1rem;
   font-size: 1.4em;
   padding: 1em;
-  background-color: #555;
+  background-color: #646cff; /* eDPIと同じ背景色に変更 */
   color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* eDPIの結果の強調 */
+#edpi-result {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  padding: 1.2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: light) {
@@ -148,7 +158,12 @@ h2 {
   }
 
   #result {
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: #646cff; /* 統一した背景色 */
+    color: #fff;
+  }
+
+  #edpi-result {
+    background-color: #535bf2; /* ライトモード用に色を変更 */
+    color: #fff;
   }
 }

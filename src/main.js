@@ -15,12 +15,14 @@ document.querySelector('#app').innerHTML = `
 
   <h2>結果</h2>
   <p id="result">ここに結果が表示されます。</p>
+  <p id="edpi-result">ここにeDPIが表示されます。</p>
 `;
 
 // 振り向き計算のロジック
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('calculator-form');
   const result = document.getElementById('result');
+  const edpiResult = document.getElementById('edpi-result');
   const dpiInput = document.getElementById('dpi');
   const sensitivityInput = document.getElementById('sensitivity');
 
@@ -30,11 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!dpi || !sensitivity || dpi <= 0 || sensitivity <= 0) {
       result.textContent = 'DPIと感度を正しく入力してください。';
+      edpiResult.textContent = ''; // eDPIの結果をクリア
       return;
     }
 
     const cmPer180 = calculateTurnDistance(dpi, sensitivity);
+    const edpi = calculateEDPI(dpi, sensitivity); // eDPIを計算
+
     result.textContent = `180度振り向きに必要な距離: ${cmPer180.toFixed(2)} cm`;
+    edpiResult.textContent = `eDPI: ${edpi.toFixed(2)}`; // eDPIを表示
   }
 
   dpiInput.addEventListener('input', updateResult);
@@ -45,7 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const distanceCm = 180 / (dpi * sensitivity * conversionFactor);
     return distanceCm;
   }
+
+  function calculateEDPI(dpi, sensitivity) {
+    return dpi * sensitivity; // eDPI = DPI * Sensitivity
+  }
 });
+
 
 
 // import './style.css'
