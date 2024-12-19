@@ -1,7 +1,7 @@
 // style.cssのインポート
 import './style.css';
 
-// HTMLをJSに含める（テンプレートリテラルを使用）
+// HTMLをJSに含
 document.querySelector('#app').innerHTML = `
   <h1>VALORANTの180度振り向き計算ツール</h1>
 
@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return dpi * sensitivity; // eDPI = DPI * Sensitivity
   }
 });
+
 
 
 
